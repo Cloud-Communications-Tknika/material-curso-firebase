@@ -64,21 +64,17 @@ function ChatRoom(props) {
     </>)
   }
   
-  function deleteMessage(props) {  
-    var message = props.message;
-    //deleteDoc(doc(db, "messages", message));
-    var collectionRef = collection(db,"messages");
-    var q = query(collectionRef, where("uid", "==", message.uid), where("text", "==", message.text), where("createdAt", "==", message.createdAt));
-    var document = getDocs(q).then(async (querySnapshot) => {
-      const firstDoc = querySnapshot.docs[0];
-      var docId = firstDoc.id;
-      var documentRef = doc(db, "messages", docId)
-      await deleteDoc(documentRef);
-  
-    });
-  }
-  
   function ChatMessage(props) {
+
+    const deleteMessage = async (props) => {
+      var message = props.message;
+      var collectionRef = collection(firestore,"messages");
+      var q = query(collectionRef, where("uid", "==", message.uid), where("text", "==", message.text), where("createdAt", "==", message.createdAt));
+      var docs = await getDocs(q);
+      var docRef = docs.docs[0].id;
+      await deleteDoc(doc(collectionRef, docRef));
+    }
+
     const { text, uid, photoURL } = props.message;
   
     const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
