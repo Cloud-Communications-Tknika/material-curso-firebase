@@ -68,7 +68,7 @@ function ChatRoom(props) {
 
     const deleteMessage = async (props) => {
       var message = props.message;
-      var collectionRef = collection(firestore,"messages");
+      var collectionRef = collection(db,"messages");
       var q = query(collectionRef, where("uid", "==", message.uid), where("text", "==", message.text), where("createdAt", "==", message.createdAt));
       var docs = await getDocs(q);
       var docRef = docs.docs[0].id;
