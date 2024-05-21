@@ -16,12 +16,12 @@ import SignOut from './components/SignOutNavBar';
 
 
 const firebaseApp = initializeApp({
-  apiKey: "AIzaSyAgee9r3urR8YvAeT5tjXl5UF8N8Ju7LwE",
-  authDomain: "chat-firebase-9235e.firebaseapp.com",
-  projectId: "chat-firebase-9235e",
-  storageBucket: "chat-firebase-9235e.appspot.com",
-  messagingSenderId: "760646584713",
-  appId: "1:760646584713:web:010ea1bbb2207eed37f958"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 })
 
 const auth = getAuth(firebaseApp);
